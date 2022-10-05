@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-firestore.js"></script>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+
+        <h1>Cloud Cafe</h1>
+
+        <div class="content">
+
+            <form id="add-cafe-form"></form>
+
+            <ul id="cafe-list"></ul>
+
+        </div>
+
+        <script>
+
+            // Import the functions you need from the SDKs you need
+            //import { initializeApp } from "firebase/app";
+            
+            // Your web app's Firebase configuration
+            const firebaseConfig = {
+            apiKey: "AIzaSyBgDhNB-i52P44CQcpca48hGZ37ZkzPykQ",
+            authDomain: "foodsurplus-2d882.firebaseapp.com",
+            databaseURL: "https://foodsurplus-2d882.firebaseio.com",
+            projectId: "foodsurplus-2d882",
+            storageBucket: "foodsurplus-2d882.appspot.com",
+            messagingSenderId: "337343705121",
+            appId: "1:337343705121:web:c2d808983af3546370b360"
+            };
+            
+            // Initialize Firebase
+            //const app = initializeApp(firebaseConfig);
+            firebase.initializeApp(firebaseConfig);
+            const db = firebase.firestore();
+            db.settings({ timestampsInSnapshots: true});
+        
+        </script>
+        <script src="app.js"></script>
+    </body>
+</html>
