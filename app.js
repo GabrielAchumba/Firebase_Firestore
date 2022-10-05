@@ -24,6 +24,12 @@ function renderCafe(doc){
         e.stopPropagation();
         let id = e.target.parentElement.getAttribute('data-id');
         db.collection('school_mgt').doc(id).delete();
+
+       /*  db.collection('school_mgt').doc(id).update({
+            name: "Gab",
+            city: "Nigeria"
+        }); */
+        //update() override targeted properties in a docunent while set() overides the whole document
     })
 
 }
