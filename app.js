@@ -30,11 +30,11 @@ function renderCafe(doc){
 
 // Getting Data
 //Remeber to click index auto generation link in our browser console.
-db.collection('school_mgt').where('city', '==', 'Manchester').orderBy('name').get().then((snapshot) => {
+/* db.collection('school_mgt').where('city', '==', 'Manchester').orderBy('name').get().then((snapshot) => {
     snapshot.docs.forEach(doc => {
         renderCafe(doc);
     })
-});
+}); */
 
 // Saving Data
 form.addEventListener('submit', (e) => {
@@ -47,3 +47,17 @@ form.addEventListener('submit', (e) => {
     form.name.value = '';
     form.city.value = '';
 })
+
+// real-time listener
+
+db.collection('school_mgt').orderBy('city').onSnapshot((snapshot) => {
+    let changes = snapshot.docChanges();
+    changes.forEach(change => {
+        if(change.type == 'added'){
+            renderCafe(change.doc);
+        }else if (change.type == 'removed'){
+            let li = cafeList.querySelector('[data-id=' + change.doc.id + ']');
+            cafeList.removeChild(li);
+        }
+    })
+});
