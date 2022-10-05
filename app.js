@@ -29,7 +29,8 @@ function renderCafe(doc){
 }
 
 // Getting Data
-db.collection('school_mgt').where('city', '==', 'Manchester').get().then((snapshot) => {
+//Remeber to click index auto generation link in our browser console.
+db.collection('school_mgt').where('city', '==', 'Manchester').orderBy('name').get().then((snapshot) => {
     snapshot.docs.forEach(doc => {
         renderCafe(doc);
     })
